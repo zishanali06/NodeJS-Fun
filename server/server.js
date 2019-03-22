@@ -12,7 +12,7 @@ let chirpArray = [{
         location: "Dallas"
     },
     {
-        name: 'Fehzan',
+        name: 'BOOM BOOM',
         age: 29,
         location: "Dallas"
     },
@@ -42,7 +42,9 @@ fs.readFile(chirppath, (err, data) => {
     
     let turndataintoobject = JSON.parse(data);
     console.log(JSON.parse(data));
-    console.log(turndataintoobject);
+    turndataintoobject.forEach(singleobject => {
+        console.log(`${singleobject.name} is ${singleobject.age} and lives in ${singleobject.location}`);
+    });
 })
 
 
