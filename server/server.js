@@ -48,15 +48,3 @@ fs.readFile(chirppath, (err, data) => {
     });
 })
 
-rp('https://reddit.com/r/popular.json')
-    .then((data) => {
-        let redditdata = JSON.parse(data);
-        fs.writeFile(path.join(__dirname, "../reddit.js"), redditdata, (err, data) => {
-            if(err) return console.log(err);
-        
-            console.log("Wrote chirps.json file");
-        });
-    })
-    .catch(e => console.log(e));
-
-
