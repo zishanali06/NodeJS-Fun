@@ -1,5 +1,6 @@
 let path = require('path');
 let fs = require('fs');
+let rp = require('request-promise');
 
 let chirpArray = [{
         name: 'Zishan',
@@ -46,5 +47,16 @@ fs.readFile(chirppath, (err, data) => {
         console.log(`${singleobject.name} is ${singleobject.age} and lives in ${singleobject.location}`);
     });
 })
+
+rp('https://reddit.com/r/popular.json')
+    .then((data) => {
+        let redditdata = JSON.parse(data);
+        fs.writeFile(path.join(__dirname, "../reddit.js"), redditdata, (err, data) => {
+            if(err) return console.log(err);
+        
+            console.log("Wrote chirps.json file");
+        });
+    })
+    .catch(e => console.log(e));
 
 
