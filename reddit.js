@@ -14,6 +14,11 @@ rp('https://reddit.com/r/popular.json')
             auth: article.data.author
         }
         articleArray.push(art);
+        // console.log(path.extname(article.data.url));
+        if(path.extname(article.data.url) === ".jpg"){
+            console.log('TEST111');
+            rp(article.data.url).pipe(fs.createWriteStream(article.data.id)).on('close', () => console.log("downloaded"));
+        }
     });
     turnnewdatatojson = JSON.stringify(articleArray);
     fs.writeFile(path.join(__dirname, "/popular-articles.json"), turnnewdatatojson, (err) => {
