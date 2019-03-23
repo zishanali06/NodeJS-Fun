@@ -21,8 +21,3 @@ rp('https://reddit.com/r/popular.json')
     });
 })
 .catch(e => console.log(e));
-
-
-fs.writeFile(path.join(__dirname, "../reddit.js"), datainjson, (err, data) => {
-    if(err) return console.log(err);
-});
