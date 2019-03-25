@@ -11,6 +11,8 @@ rp('https://reddit.com/r/popular.json')
         
         //Takes the JSON we got from the URL and turns it into a javascript array
         let datainjavascript = JSON.parse(datainjson);
+
+        //had to look thru data that was coming in to figure out where the right data was
         datainjavascript.data.children.forEach(article => {
             let art = {
                 title: article.data.title,
